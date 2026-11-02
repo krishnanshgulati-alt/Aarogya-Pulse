@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aarogya Pulse | Anemia Awareness Glove</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Aarogya Pulse home">
+      <span class="brand-mark">✿</span>
+      <span><strong>Aarogya Pulse</strong><small>Menstrual health & awareness</small></span>
+    </a>
+    <span id="connection-pill" class="pill pill-muted">Checking backend…</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">ANEMIA AWARENESS GLOVE · STUDENT PROTOTYPE</p>
+        <h1>Understand your health.<br><span>Know when to ask for help.</span></h1>
+        <p class="hero-copy">
+          A wearable-monitoring and menstrual-health education demo.
+          Sensor readings are informational and cannot diagnose anemia.
+        </p>
+      </div>
+      <div class="hero-icon" aria-hidden="true">♡</div>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <h2>Glove readings</h2>
+        <p>Values below are demo data until you connect the ESP32.</p>
+      </div>
+      <div class="button-row">
+        <button id="demo-button" class="button button-primary">Generate demo reading</button>
+        <button id="refresh-button" class="button button-secondary">Refresh</button>
+      </div>
+    </section>
+
+    <div class="cards-grid">
+      <article class="metric-card">
+        <div class="metric-top"><span class="metric-icon rose">♥</span><span class="metric-label">Heart rate</span></div>
+        <div class="metric-value"><span id="heart-rate">—</span><small> BPM</small></div>
+        <p class="metric-note">Pulse rate reported by the sensor</p>
+      </article>
+      <article class="metric-card">
+        <div class="metric-top"><span class="metric-icon blue">◉</span><span class="metric-label">Estimated SpO₂</span></div>
+        <div class="metric-value"><span id="spo2">—</span><small>%</small></div>
+        <p class="metric-note">Optical estimate; not a hemoglobin test</p>
+      </article>
+      <article class="metric-card">
+        <div class="metric-top"><span class="metric-icon amber">♨</span><span class="metric-label">Skin temperature</span></div>
+        <div class="metric-value"><span id="temperature">—</span><small> °C</small></div>
+        <p class="metric-note">Surface temperature, not core temperature</p>
+      </article>
+      <article class="metric-card">
+        <div class="metric-top"><span class="metric-icon violet">〰</span><span class="metric-label">Motion status</span></div>
+        <div class="metric-value text-value" id="motion">—</div>
+        <p class="metric-note">Movement can affect optical sensor quality</p>
+      </article>
+    </div>
+
+    <section class="content-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">MODEL INTEGRATION</p><h2>ML assessment</h2></div>
+          <span class="pill pill-demo">Placeholder</span>
+        </div>
+        <div class="assessment-box">
+          <div class="assessment-symbol">◎</div>
+          <div>
+            <h3 id="assessment-title">Model not connected</h3>
+            <p id="assessment-message">Generate or receive a reading, then click “Check model status”. The current backend has a placeholder only; it does not predict anemia.</p>
+          </div>
+        </div>
+        <div class="button-row">
+          <button id="predict-button" class="button button-primary">Check model status</button>
+        </div>
+        <p class="fine-print">Do not use this prototype for diagnosis or treatment decisions. Any future ML output must be validated before health-related use.</p>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">RECENT ACTIVITY</p><h2>Reading history</h2></div>
+          <button id="clear-button" class="button button-quiet">Clear demo data</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Heart rate</th><th>SpO₂</th><th>Source</th></tr></thead>
+            <tbody id="history-body"><tr><td colspan="4" class="empty-cell">No readings yet.</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="education-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">LEARN WITHOUT SHAME</p><h2>Menstrual health & anemia</h2></div>
+      </div>
+      <div class="education-grid">
+        <article class="education-card">
+          <span class="education-icon">♡</span>
+          <h3>What is anemia?</h3>
+          <p>Anemia occurs when the body does not have enough healthy red blood cells or hemoglobin. Iron deficiency is one possible cause.</p>
+        </article>
+        <article class="education-card">
+          <span class="education-icon">✦</span>
+          <h3>Know your symptoms</h3>
+          <p>Persistent tiredness, dizziness, weakness or breathlessness deserve attention. These symptoms can have many causes.</p>
+        </article>
+        <article class="education-card">
+          <span class="education-icon">＋</span>
+          <h3>When to seek help</h3>
+          <p>Very heavy or prolonged periods, or symptoms that worry you, should be discussed with a qualified health professional. Severe breathlessness, chest pain, fainting or heavy bleeding with marked weakness need urgent care.</p>
+        </article>
+        <article class="education-card">
+          <span class="education-icon">❋</span>
+          <h3>Food and testing</h3>
+          <p>Beans, lentils, chickpeas, leafy greens and iron-fortified foods can contribute iron. A clinician may recommend a blood count and ferritin testing when appropriate.</p>
+        </article>
+      </div>
+      <p class="privacy-note"><strong>Privacy:</strong> This local demo does not ask for your name, age or period dates. Before collecting personal health data from real users—especially minors—add appropriate consent, access controls and a clear privacy policy.</p>
+    </section>
+
+    <footer>
+      <span>Aarogya Pulse · Student prototype</span>
+      <span>Education and monitoring only — not a medical device.</span>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>
