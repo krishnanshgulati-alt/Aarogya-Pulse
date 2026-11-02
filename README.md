@@ -1,4 +1,4 @@
-# Sakhi — Anemia Awareness Glove (student prototype)
+# Aarogya Pulse — Anemia Awareness Glove (student prototype)
 
 This starter project contains:
 - A responsive HTML/CSS/JavaScript dashboard.
